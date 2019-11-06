@@ -109,8 +109,8 @@ class FlutterCryptoPlugin: MethodCallHandler {
       return
     }
 
-    val keyArray = key.toByteArray(CHARSET)
-    val ivArray = iv.toByteArray(CHARSET)
+    val keyArray = key.toByteArray()
+    val ivArray = iv.toByteArray()
 
     if(keyArray.size != 16 || ivArray.size != 16){
       result.error(
@@ -145,7 +145,7 @@ class FlutterCryptoPlugin: MethodCallHandler {
 
     val ciphertext = cipher.doFinal(dataArray)
 
-    val text = ciphertext.toString(Charsets.UTF_8)
+    val text = String(ciphertext, Charset.defaultCharset())
 
     result.success(text)
 
