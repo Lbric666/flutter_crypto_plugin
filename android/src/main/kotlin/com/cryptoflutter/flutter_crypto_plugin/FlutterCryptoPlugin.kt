@@ -145,7 +145,7 @@ class FlutterCryptoPlugin: MethodCallHandler {
 
     val ciphertext = cipher.doFinal(dataArray)
 
-    val text = String(ciphertext, Charset.defaultCharset())
+    val text = ciphertext.toString(Charsets.UTF_8);
 
     result.success(text)
 
